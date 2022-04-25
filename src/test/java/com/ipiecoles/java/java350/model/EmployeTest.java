@@ -1,62 +1,44 @@
 package com.ipiecoles.java.java350.model;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployeTest {
 
     @Test
-    public void testNbAnneeAncienneteNow(){
-        //Given
-        Employe employe = new Employe();
-        employe.setDateEmbauche(LocalDate.now());
-
-        //When
-        Integer nbAnnees = employe.getNombreAnneeAnciennete();
-
-        //Then
-        Assertions.assertThat(nbAnnees).isEqualTo(0);
-    }
-
-    @Test
-    public void testNbAnneeAncienneteNowMinus2(){
+    public void testGetNbAnneesAncienneteDateEmbauchePassee() {
         //Given
         Employe employe = new Employe();
         employe.setDateEmbauche(LocalDate.now().minusYears(2));
-
         //When
-        Integer nbAnnees = employe.getNombreAnneeAnciennete();
-
+        Integer nbAnneesAnciennete = employe.getNombreAnneeAnciennete();
         //Then
-        Assertions.assertThat(nbAnnees).isEqualTo(2);
+        Assertions.assertThat(nbAnneesAnciennete).isEqualTo(2);
     }
 
     @Test
-    public void testNbAnneeAncienneteNowPlus3(){
+    public void testGetNbAnneesAncienneteDateEmbaucheFuture() {
         //Given
         Employe employe = new Employe();
-        employe.setDateEmbauche(LocalDate.now().plusYears(3));
-
+        employe.setDateEmbauche(LocalDate.now().plusYears(2));
         //When
-        Integer nbAnnees = employe.getNombreAnneeAnciennete();
-
+        Integer nbAnneesAnciennete = employe.getNombreAnneeAnciennete();
         //Then
-        Assertions.assertThat(nbAnnees).isEqualTo(0);
+        Assertions.assertThat(nbAnneesAnciennete).isZero();
     }
 
     @Test
-    public void testNbAnneeAncienneteNull(){
+    public void testGetNbAnneesAncienneteDateEmbaucheNull() {
         //Given
         Employe employe = new Employe();
         employe.setDateEmbauche(null);
-
         //When
-        Integer nbAnnees = employe.getNombreAnneeAnciennete();
-
+        Integer nbAnneesAnciennete = employe.getNombreAnneeAnciennete();
         //Then
-        Assertions.assertThat(nbAnnees).isEqualTo(0);
+        Assertions.assertThat(nbAnneesAnciennete).isZero();
     }
-
 }
