@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class EmployeTest {
 
     @Test
-    public void testGetNbAnneesAncienneteDateEmbaucheNow(){
+    public void testGetNbAnneesAncienneteDateEmbaucheNow() {
         //Given
         Employe employe = new Employe();
         employe.setDateEmbauche(LocalDate.now());
@@ -24,7 +24,7 @@ public class EmployeTest {
     }
 
     @Test
-    public void testGetNbAnneesAncienneteDateEmbauchePassee(){
+    public void testGetNbAnneesAncienneteDateEmbauchePassee() {
         //Given
         Employe employe = new Employe();
         employe.setDateEmbauche(LocalDate.now().minusYears(2));
@@ -37,7 +37,7 @@ public class EmployeTest {
     }
 
     @Test
-    public void testGetNbAnneesAncienneteDateEmbaucheFuture(){
+    public void testGetNbAnneesAncienneteDateEmbaucheFuture() {
         //Given
         Employe employe = new Employe();
         employe.setDateEmbauche(LocalDate.now().plusYears(2));
@@ -50,7 +50,7 @@ public class EmployeTest {
     }
 
     @Test
-    public void testGetNbAnneesAncienneteDateEmbaucheNull(){
+    public void testGetNbAnneesAncienneteDateEmbaucheNull() {
         //Given
         Employe employe = new Employe();
         employe.setDateEmbauche(null);
@@ -79,7 +79,7 @@ public class EmployeTest {
                                      Integer nbAnneesAnciennete,
                                      Integer performance,
                                      Double tauxTravail,
-                                     Double primeCalculee){
+                                     Double primeCalculee) {
         //Given
         Employe employe = new Employe("Doe", "John", matricule, LocalDate.now().minusYears(nbAnneesAnciennete),
                 2500d, performance, tauxTravail);
@@ -89,6 +89,21 @@ public class EmployeTest {
 
         //Then
         Assertions.assertThat(prime).isEqualTo(primeCalculee);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1000, 10, 1100",
+            "1000, 50, 1500",
+    })
+    public void testGetPrimeAnnuelle(double salaireInitial, double pourcentage, double salaireFinal) {
+        Employe employe = new Employe("Doe", "John", "1", LocalDate.now().minusYears(1),
+                salaireInitial, 1, 1700.0);
+
+        employe.augmenterSalaire(pourcentage);
+
+        //Then
+        Assertions.assertThat(employe.getSalaire()).isEqualTo(salaireFinal);
     }
 
 }
