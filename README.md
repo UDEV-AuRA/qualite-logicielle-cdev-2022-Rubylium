@@ -25,7 +25,7 @@ Répondre de nouveau aux questions. Qu'est-ce qui a changé ?
    - Documentation : https://docs.travis-ci.com/user/languages/java/
    - Configurer le projet et vérifier que le premier build se passe correctement. Après chaque exercice, vérifier que le build passe toujours...
  
-## Evaluation de la qualité
+## Evaluation de la qualité 
 
    - Connectez-vous à SonarCloud https://sonarcloud.io/ avec votre compte Github
    - Ajouter votre projet dans Sonar
