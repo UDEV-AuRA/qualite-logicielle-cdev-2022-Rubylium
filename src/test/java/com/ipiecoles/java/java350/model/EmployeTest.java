@@ -101,8 +101,6 @@ public class EmployeTest {
                 salaireInitial, 1, 1700.0);
 
         employe.augmenterSalaire(pourcentage);
-
-        //Then
         Assertions.assertThat(employe.getSalaire()).isEqualTo(salaireFinal);
     }
 
