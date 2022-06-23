@@ -82,7 +82,7 @@ Infos :
   - 2032 : l'année est bissextile, a débuté un jeudi et il y a 7 jours fériés ne tombant pas le week-end.
 
 - Tester sans dépendance à la BDD la méthode `calculPerformanceCommercial` d'`EmployeService`
-
+ 
 ## Tests d'intégration
 
 - Tester de manière intégrée une cas nominal de la méthode précédente
